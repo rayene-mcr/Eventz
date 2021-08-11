@@ -49,6 +49,10 @@ import Settings from "views/examples/Settings.js";
 import TwitterRedesign from "views/examples/TwitterRedesign.js";
 import Welcome from "eventz/folderss/Welcome";
 import Landing from "eventz/folderss/Landing";
+import AddEvent from "eventz/folderss/AddEvent";
+import Display from "eventz/folderss/Display";
+import Update from "eventz/folderss/Update";
+
 
 
 // others
@@ -68,6 +72,18 @@ ReactDOM.render(
       <Route
         path="/LandingPage"
         render={(props) => <Landing {...props} />}
+      />
+      <Route
+        path="/add-event"
+        render={(props) => <AddEvent {...props} />}
+      />
+      <Route
+        path="/display"
+        render={(props) => <Display {...props} />}
+      />
+       <Route
+        path="/update/:id"
+        render={(props) => <Update {...props} />}
       />
       <Route path="/sections" render={(props) => <Sections {...props} />} />
       <Route

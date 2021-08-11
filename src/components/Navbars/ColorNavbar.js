@@ -47,8 +47,10 @@ function ColorNavbar() {
       window.removeEventListener("scroll", updateNavbarColor);
     };
   });
+ 
   let history = useHistory();
   const handleOnClick = useCallback(() => history.push('/LandingPage'), [history]);
+ 
   
   return (
     <>

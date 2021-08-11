@@ -32,7 +32,8 @@ function Welcome() {
       }
     }
   };
-
+  
+  
   React.useEffect(() => {
     document.body.classList.add("presentation-page");
     window.addEventListener("scroll", checkScroll);
@@ -43,6 +44,7 @@ function Welcome() {
       window.removeEventListener("scroll", checkScroll);
     };
   });
+  
   return (
     <>
       <ColorNavbar />

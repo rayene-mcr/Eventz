@@ -1,6 +1,9 @@
 import React, { useState, useEffect } from "react";
 import DangerNavbar from "components/Navbars/DangerNavbar";
 import axios from "axios";
+import { useFormik } from 'formik';
+import {  useHistory } from "react-router-dom";
+
 
 
 
@@ -13,17 +16,45 @@ import {
   TabContent,
   TabPane,
   Container,
+  FormGroup,
+  Input,
   Row,
   Col,
 } from "reactstrap";
 import FooterBlack from "components/Footers/FooterBlack";
+import styled from "styled-components";
 
 // core components
 
 function Display() {
     let [events, setEvents] = useState([]);
+    const history = useHistory();
+    const comment = (id) => {
+      history.push('/eventdetail/'+ id);
+    }
+    const [showForm, setShowForm] = useState(false);
+    const showFormm = () => {
+        setShowForm(!showForm);
+      }
     //eslint-disable-next-line
   const [activePill, setActivePill] = React.useState("1");
+  const formik = useFormik({
+    initialValues: {
+      comment: ''
+    }
+    ,
+    onSubmit: values => {
+      alert(JSON.stringify(values, null, 2));
+    },
+  });
+  const rateobject = {
+    email : "rayen.mechergui@esprit.tn",
+    comment:formik.values.comment,
+  }
+  const rating = (id) => {
+    axios.post(`http://localhost:3001/event/Comment/${id}`, rateobject)
+        console.log(rateobject)
+  }
   // pills for the last pricing
   //eslint-disable-next-line
   const [pillActive, setPillActive] = React.useState("personal");
@@ -66,9 +97,10 @@ function Display() {
             </Row>
             <div className="space-top" />
             <Row>
-              {events.map((event)=>(
+              {events.map((event,index)=>(
               <Col md="4">
                 <Card
+                  key={index}
                   className="card-pricing"
                   data-background="image"
                   style={{
@@ -107,6 +139,33 @@ function Display() {
                     >
                       Participate
                     </Button>
+                    <Button
+                      className="btn-round ml-2"
+                      color="danger"
+                      onClick={()=>{comment(event._id)}}
+                    >
+                      Comment
+                    </Button>
+                    {showForm && (
+       <Comment>
+       <FormGroup>
+       <Input
+         id="comment"
+         name="comment"
+         type="text"
+         {...formik.getFieldProps('comment')}
+       />
+     </FormGroup>
+     <Button
+                      className="btn-round"
+                      color="danger"
+                      onClick={()=>rating(event._id)}
+                    >
+                     <i class="fa fa-comment"></i>
+                    </Button>
+     </Comment>
+    
+   )}
                   </CardBody>
                 </Card>
               </Col>
@@ -124,5 +183,8 @@ function Display() {
     </>
   );
 }
+const Comment = styled.div`
+margin-top:13px;
+`
 
 export default Display;

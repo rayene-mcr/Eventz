@@ -1,8 +1,8 @@
 import DangerNavbar from "components/Navbars/DangerNavbar";
 import React from "react";
-import { useState, useEffect, useCallback } from "react";
-import styled from "styled-components";
+import { useState, useEffect } from "react";
 import {  useHistory } from "react-router-dom";
+
 
 
 
@@ -31,8 +31,11 @@ function Landing() {
   var DISCOVERY_DOCS = ["https://www.googleapis.com/discovery/v1/apis/calendar/v3/rest"]
   var SCOPES = "https://www.googleapis.com/auth/calendar.events"
   const history = useHistory();
-  const updt = (id) => {
+  const update = (id) => {
     history.push('/update/'+ id);
+  }
+  const invite = (id) => {
+    history.push('/invite/'+ id);
   }
   const handleList = () => {
     gapi.load('client:auth2', () => {
@@ -120,14 +123,15 @@ function Landing() {
                       color="success"
                       href="#pablo"
                       outline
+                      onClick={()=>{invite(event.id)}}
                     >
-                      Participate
+                      Invite
                     </Button>
                     <Button
                       className="btn-round ml-1"
                       color="success"
                       outline
-                      onClick={()=>{updt(event.id)}}
+                      onClick={update}
                     >
                       Edit
                     </Button>

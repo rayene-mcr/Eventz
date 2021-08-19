@@ -19,7 +19,7 @@ function ProductPageHeader() {
         style={{
           backgroundImage:
             "url(" +
-            require("assets/img/sections/clark-street-mercantile.jpg").default +
+            require("assets/img/sections/felix-rostig-UmV2wr-Vbq8-unsplash.jpg").default +
             ")",
         }}
       >

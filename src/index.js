@@ -52,6 +52,9 @@ import Landing from "eventz/folderss/Landing";
 import AddEvent from "eventz/folderss/AddEvent";
 import Display from "eventz/folderss/Display";
 import Update from "eventz/folderss/Update";
+import Invite from "eventz/folderss/Invite";
+import EventDetail from "eventz/folderss/EventDetails";
+import Comments from "eventz/folderss/Comments";
 
 
 
@@ -84,6 +87,18 @@ ReactDOM.render(
        <Route
         path="/update/:id"
         render={(props) => <Update {...props} />}
+      />
+      <Route
+        path="/invite/:id"
+        render={(props) => <Invite {...props} />}
+      />
+      <Route
+        path="/eventdetail/:id"
+        render={(props) => <EventDetail {...props} />}
+      />
+      <Route
+        path="/comments/:id"
+        render={(props) => <Comments {...props} />}
       />
       <Route path="/sections" render={(props) => <Sections {...props} />} />
       <Route

@@ -52,6 +52,9 @@ import Landing from "eventz/folderss/Landing";
 import AddEvent from "eventz/folderss/AddEvent";
 import Display from "eventz/folderss/Display";
 import Update from "eventz/folderss/Update";
+import CreateProp from "eventz/folderss/AddProp"
+import ListProp from "eventz/folderss/ListProp"
+
 
 
 
@@ -69,6 +72,10 @@ ReactDOM.render(
         path="/welcomee"
         render={(props) => <Welcome {...props} />}
       />
+       <Route
+        path="/ListProp"
+        render={(props) => <ListProp {...props} />}
+      />
       <Route
         path="/LandingPage"
         render={(props) => <Landing {...props} />}
@@ -76,6 +83,10 @@ ReactDOM.render(
       <Route
         path="/add-event"
         render={(props) => <AddEvent {...props} />}
+      />
+      <Route
+        path="/add-prop"
+        render={(props) => <CreateProp {...props} />}
       />
       <Route
         path="/display"

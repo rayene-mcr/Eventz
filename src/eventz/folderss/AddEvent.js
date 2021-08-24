@@ -23,6 +23,7 @@ import * as Yup from 'yup';
 import "react-datepicker/dist/react-datepicker.css";
 import { useState} from "react";
 import axios from "axios";
+import ReactMapGL, { Marker ,Popup} from 'react-map-gl';
 
 
 function AddEvent() {
@@ -56,7 +57,9 @@ function AddEvent() {
       enddate:'',
       endtime:'',
       description:'',
-      date: ""
+      date: "",
+      lat: null,
+      lng : null
     },
     validate,
     validationSchema: Yup.object({
@@ -85,7 +88,24 @@ function AddEvent() {
     };
   });
 
+  const [newPlace, setNewPlace] = useState(null);
 
+  const [viewport, setViewport] = useState({
+    width: "20vw",
+    height: "40vh",
+    latitude: 37.7577,
+    longitude: 37,
+    zoom: 4
+});
+
+  const handleAddClick = (e) => {
+    const [longitude, latitude] = e.lngLat;
+    console.log(e.lngLat)
+    setNewPlace({
+      lat: latitude,
+      lng: longitude,
+    });
+  };
 
    const handleClick = () => {
     gapi.load('client:auth2', () => {
@@ -179,7 +199,9 @@ function AddEvent() {
           enddateTime: formik.values.enddate + 'T'+ formik.values.endtime +'+01:00',
           attendees: [
            {email: formik.values.attendee1},
-         ]
+         ],
+         lat: newPlace.lat,
+         lng:newPlace.lng
         }
         axios.post("http://localhost:3001/event/addevent", eventobject)
         console.log(eventobject)
@@ -205,6 +227,16 @@ function AddEvent() {
               <Row>
                 <Col md="5" sm="5">
                   <h6>Product Image</h6>
+
+                  <div>
+                  <ReactMapGL
+                      {...viewport}
+                      mapboxApiAccessToken={process.env.REACT_APP_MAPBOX}
+                      onViewportChange={nextViewport => setViewport(nextViewport)}
+                      mapStyle="mapbox://styles/waelbannani/cksq95crz10te18quix081ygw"
+                      onDblClick={handleAddClick}
+                  />
+                  </div>
                   <ImageUpload />
                   <h6>Tags</h6>
                   <div id="tags">
@@ -254,6 +286,7 @@ function AddEvent() {
                       Print <span className="form-check-sign" />
                     </Label>
                   </div>
+                  
                 </Col>
                 <Col md="7" sm="7">
                 <form onSubmit={formik.handleSubmit}>

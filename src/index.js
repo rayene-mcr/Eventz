@@ -60,6 +60,7 @@ import ListProp from "eventz/folderss/ListProp"
 import Invite from "eventz/folderss/Invite";
 import EventDetail from "eventz/folderss/EventDetails";
 import Comments from "eventz/folderss/Comments";
+import Map from "eventz/folderss/Map"
 
 
 
@@ -77,6 +78,10 @@ ReactDOM.render(
       <Route
         path="/welcomee"
         render={(props) => <Welcome {...props} />}
+      />
+      <Route
+        path="/EventMap"
+        render={(props) => <Map {...props} />}
       />
        <Route
         path="/ListProp"

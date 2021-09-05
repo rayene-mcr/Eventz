@@ -24,12 +24,13 @@ import {
 } from "reactstrap";
 import FooterBlack from "components/Footers/FooterBlack";
 import styled from "styled-components";
+import AdminNavbar from "components/Navbars/AdminNavbar";
 
 
 
 // core components
 
-function Display() {
+function Admin() {
     let [events, setEvents] = useState([]);
     const history = useHistory();
     const comment = (id) => {
@@ -79,20 +80,26 @@ function Display() {
         console.log(participant)
         toast.success('Invite has been successfully sent')
   }
+  const deletevent = (id) => {
+      axios.delete(`http://localhost:3001/event/delete/${id}`)
+      toast.success("Event successfully deleted")
+      history.go(0)
+  }
+  let name = localStorage.getItem("name")
 
 
   return (
     <>
-    <DangerNavbar />
+    <AdminNavbar />
       <div className="section section-pricing cd-section" id="pricing">
         <ToastContainer/>
         <div className="pricing-2">
           <Container>
             <Row>
               <Col className="ml-auto mr-auto text-center" md="6">
-                <h2 className="title">Pick the best plan for you</h2>
+                <h2 className="title">Welcome {name}</h2>
                 <h5 className="description">
-                You have Unlimited list of events that you can participate in.
+                Here is the full list of eventz in your application
                 </h5>
                 <br />
             
@@ -141,17 +148,10 @@ function Display() {
                     </ul>
                     <Button
                       className="btn-round"
-                      color="danger"
-                      onClick={()=>{participate(event._id,event._email)}}
+                      color="red"
+                      onClick={()=>{deletevent(event._id)}}
                     >
-                      Participate
-                    </Button>
-                    <Button
-                      className="btn-round ml-2"
-                      color="danger"
-                      onClick={()=>{comment(event._id)}}
-                    >
-                      Comment
+                      Delete
                     </Button>
                     {showForm && (
        <Comment>
@@ -189,4 +189,4 @@ const Comment = styled.div`
 margin-top:13px;
 `
 
-export default Display;
+export default Admin;

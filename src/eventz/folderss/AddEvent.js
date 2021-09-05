@@ -151,7 +151,10 @@ function AddEvent() {
           image = "https://image.winudf.com/v2/image/Y29tLmZyZWVoZC52b2xsZXliYWxsd2FsbHBhcGVyc19zY3JlZW5fMl8xNTM2MDQ5NjIwXzAzNA/screen-2.jpg?fakeurl=1&type=.jpg"
         }
         else if (formik.values.summary.includes("Swimming")) {
-          image = "https://v1.nitrocdn.com/kMoOFpDlsOVtlYJLrnSRNCQXaUFHZPTY/assets/static/optimized/rev-cf401e7/wp-content/uploads/2020/09/beach-photography-featured-1-2048x1363.jpg"
+          image = "https://d1s9j44aio5gjs.cloudfront.net/2016/07/The_Benefits_of_Swimming.jpg"
+        }
+        else if (formik.values.summary.includes("Swimm")) {
+          image = "https://d1s9j44aio5gjs.cloudfront.net/2016/07/The_Benefits_of_Swimming.jpg"
         }
         else if (formik.values.summary.includes("Beach")) {
           image = "https://v1.nitrocdn.com/kMoOFpDlsOVtlYJLrnSRNCQXaUFHZPTY/assets/static/optimized/rev-cf401e7/wp-content/uploads/2020/09/beach-photography-featured-1-2048x1363.jpg"
@@ -412,7 +415,7 @@ function AddEvent() {
               </Row>
               <Row className="buttons-row">
               <div class="col-md-12 text-center">
-                    <button type="button" class="btn btn-secondary"disabled={!(formik.isValid && formik.dirty)}  onClick={handleClick}>Save & Publish</button>
+                    <button type="button" class="btn btn-secondary" disabled={!(formik.isValid && formik.dirty)}  onClick={handleClick}>Save & Publish</button>
                     </div>
               </Row>
             </div>

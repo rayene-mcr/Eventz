@@ -1,7 +1,6 @@
 import React , {useState, useEffect} from "react";
 import { useParams } from "react-router-dom";
 import { useFormik } from 'formik';
-import * as Yup from 'yup';
 
 // reactstrap components
 import {
@@ -10,7 +9,6 @@ import {
   CardTitle,
   Form,
   FormGroup,
-  Label,
   InputGroupAddon,
   InputGroup,
   InputGroupText,
@@ -85,7 +83,7 @@ request.execute(function (event) {
   useEffect(() => {
     upda();
  }, []);
-
+  
     const handleList = () => {
         gapi.load('client:auth2', () => {
           console.log('loaded client')  

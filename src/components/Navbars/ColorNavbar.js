@@ -19,6 +19,7 @@ import {
   Container,
   UncontrolledTooltip,
 } from "reactstrap";
+
 // core components
 
 function ColorNavbar() {
@@ -49,7 +50,7 @@ function ColorNavbar() {
   });
  
   let history = useHistory();
-  const handleOnClick = useCallback(() => history.push('/LandingPage'), [history]);
+  const handleOnClick = useCallback(() => history.push('/login'), [history]);
  
   
   return (

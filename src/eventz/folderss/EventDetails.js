@@ -64,8 +64,10 @@ function EventDetail() {
           alert(JSON.stringify(values, null, 2));
         },
       });
+      let gmail = localStorage.getItem("googleemail")
+      let remail = localStorage.getItem("email")
       const rateobject = {
-        email : "rayen.mechergui@esprit.tn",
+        email : remail || gmail,
         comment:formik.values.comment,
       }
       const rating = () => {

@@ -24,7 +24,7 @@ import Cookies from "js-cookie";
 import { useCookies } from "react-cookie";
 // core components
 
-function WhiteNavbar() {
+function AdminNavbar() {
 let name = localStorage.getItem("name")
 let gname = localStorage.getItem("googlename")
 let history = useHistory()
@@ -152,6 +152,21 @@ let history = useHistory()
                   </DropdownItem>
                 </DropdownMenu>
               </UncontrolledDropdown>
+              <UncontrolledDropdown nav inNavbar>
+                <DropdownToggle color="default" caret nav>
+                  Dashboard
+                </DropdownToggle>
+                <DropdownMenu className="dropdown-danger" right>
+                  <DropdownItem to="/adminroute" tag={Link}>
+                    <i className="nc-icon nc-bank" />
+                    Events
+                  </DropdownItem>
+                  <DropdownItem to="/users" tag={Link}>
+                    <i className="nc-icon nc-basket" />
+                    Users
+                  </DropdownItem>
+                </DropdownMenu>
+              </UncontrolledDropdown>
               <Name><strong>{name}</strong></Name>
               <Name><strong>{gname}</strong></Name>
               <NavItem>
@@ -178,4 +193,4 @@ margin-right:10px;
 color:white;
 `
 
-export default WhiteNavbar;
+export default AdminNavbar;

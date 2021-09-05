@@ -131,7 +131,7 @@ function Landing() {
                       className="btn-round ml-1"
                       color="success"
                       outline
-                      onClick={update}
+                      onClick={()=>{update(event.id)}}
                     >
                       Edit
                     </Button>

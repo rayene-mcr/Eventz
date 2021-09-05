@@ -47,7 +47,7 @@ function Welcome() {
   
   return (
     <>
-      <ColorNavbar />
+      <ColorNavbar/>
       <PresentationHeader />
       <SectionSummary />
       <SectionComponents />

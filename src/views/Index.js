@@ -1,4 +1,7 @@
-import React from "react";
+import React, {useState, useEffect } from "react";
+import axios from 'axios';
+import { BrowserRouter, Switch, Route } from 'react-router-dom';
+
 
 // reactstrap components
 // import {
@@ -22,6 +25,8 @@ import SectionComments from "./index-sections/SectionComments.js";
 import SectionCommentsAreaSmall from "./index-sections/SectionCommentsAreaSmall.js";
 import SectionJavaScript from "./index-sections/SectionJavaScript.js";
 import SectionCards from "./index-sections/SectionCards.js";
+import Register from "eventz/folderss/Register.js";
+
 
 function Index() {
   document.documentElement.classList.remove("nav-open");
@@ -33,6 +38,7 @@ function Index() {
       document.body.classList.remove("index-page");
     };
   });
+
   return (
     <>
       <ColorNavbar />
